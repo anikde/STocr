@@ -1,19 +1,23 @@
+import csv
+import fire
 import json
-from PIL import Image
-from dataclasses import dataclass
+import numpy as np
+import os
+import pandas as pd
+import sys
 import torch
-from strhub.data.module import SceneTextDataModule
-from strhub.models.utils import load_from_checkpoint
+
+
+from dataclasses import dataclass
+from PIL import Image
 from nltk import edit_distance
 from torchvision import transforms as T
 from typing import Optional, Callable, Sequence, Tuple
 from tqdm import tqdm
-import numpy as np
-import pandas as pd
+from strhub.data.module import SceneTextDataModule
+from strhub.models.utils import load_from_checkpoint
 
-import csv
-import os
-import sys
+
 
 def get_transform(img_size: Tuple[int], augment: bool = False, rotation: int = 0):
     transforms = []
@@ -49,14 +53,20 @@ def get_model_output(device, model, image_path, language):
 
     return text
 
-if __name__ =="__main__":
+def main(checkpoint, language, image_dir, save_dir):
+    """
+    Runs the OCR model to process images and save the output as a JSON file.
+
+    Args:
+        checkpoint (str): Path to the model checkpoint file.
+        language (str): Language code (e.g., 'hindi', 'english').
+        image_dir (str): Directory containing the images to process.
+        save_dir (str): Directory where the output JSON file will be saved.
+
+    Example usage:
+        python your_script.py --checkpoint /path/to/checkpoint.ckpt --language hindi --image_dir /path/to/images --save_dir /path/to/save
+    """
     device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
-
-    language = 'hindi'
-    checkpoint = f"/DATA/ocr_team_2/anik/model_check_points/hindi.ckpt" 
-    test_image_dir = f"/DATA/ocr_team_2/anik/splitonBSTD/bstd/recognition/test/meitei"
-    save_path = f"output/{language}_test.json"
-
 
     if language != "english":
         model = load_model(device, checkpoint)
@@ -64,12 +74,16 @@ if __name__ =="__main__":
         model = torch.hub.load('baudm/parseq', 'parseq', pretrained=True).eval().to(device)
 
     parseq_dict = {}
-    for image_path in tqdm(image_paths):
-        assert os.path.exists(image_path) == True, f"{image_path}"
-        text = get_model_output(device, model, image_path, language=f"{language}")
+    for image_path in tqdm(os.listdir(image_dir)):
+        assert os.path.exists(os.path.join(image_dir, image_path)) == True, f"{image_path}"
+        text = get_model_output(device, model, os.path.join(image_dir, image_path), language=f"{language}")
     
         filename = image_path.split('/')[-1]
         parseq_dict[filename] = text
 
-    with open(save_path, 'w') as json_file:
+    os.makedirs(save_dir, exist_ok=True)
+    with open(f"{save_dir}/{language}_test.json", 'w') as json_file:
         json.dump(parseq_dict, json_file, indent=4, ensure_ascii=False)
+
+if __name__ == '__main__':
+    fire.Fire(main)

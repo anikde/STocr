@@ -58,7 +58,7 @@ def _get_model_class(key):
     elif 'vitstr' in key:
         from .vitstr.system import ViTSTR as ModelClass
     else:
-        raise InvalidModelError(f"Unable to find model class for '{key}'")
+        from .parseq.system import PARSeq as ModelClass
     return ModelClass
 
 

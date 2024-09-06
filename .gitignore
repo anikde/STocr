@@ -151,3 +151,4 @@ cython_debug/
 
 ############# CUSTOM ENTRIES ####################
 demo_images/
+output
