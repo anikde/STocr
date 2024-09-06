@@ -29,3 +29,7 @@ python your_script.py \
 --save_dir /path/to/save
 ```
 To check the argument usage ```python infer.py --help```.
+
+### Acknowledgments
+
+Text Recognition - [PARseq](https://github.com/baudm/parseq)
