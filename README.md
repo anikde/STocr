@@ -20,7 +20,7 @@ pip install -r requirements/core.${platform}.txt -e .[train,test]
 
 
 ### Inference 
-Following command is used to get inference on a set of images from desired model options.
+Following command is used to get inference on a set of images from desired model options available in [assets](https://github.com/anikde/STocr/releases/tag/v1.0.0).
 ```
 python your_script.py \
 --checkpoint /path/to/checkpoint.ckpt \
