@@ -3,7 +3,7 @@ import fire
 import json
 import numpy as np
 import os
-import pandas as pd
+# import pandas as pd
 import sys
 import torch
 
