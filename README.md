@@ -32,6 +32,7 @@ python your_script.py \
 --image_dir /path/to/images \
 --save_dir /path/to/save
 ```
+For english you can directly run ```python infer.py --checkpoint  --image_dir images --language english --save_dir output ```
 To check the argument usage ```python infer.py --help```.
 
 ### Acknowledgments
