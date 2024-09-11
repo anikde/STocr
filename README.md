@@ -1,5 +1,14 @@
 ## Getting Started
-This repository contains modules for recognition for 7 different languages.
+This repository contains recognition modules for 7 different languages.
+| Language |
+|----------|
+| Assamese | 
+| Hindi    |
+| Gujarati |
+| Kannada  |
+| Malayalam|
+| Punjabi  |
+| Tamil    | 
 
 ### Installation
 Requires Python >= 3.9 and PyTorch >= 1.10 (until 1.13). The default requirements files will install the latest versions of the dependencies (as of August 21, 2023).
