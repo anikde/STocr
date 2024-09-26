@@ -4,10 +4,10 @@ This repository contains recognition modules for 8 different languages.
 |----------|
 | Assamese | 
 | Bengali  |
-| Hindi    |
 | Gujarati |
-| Kannada  |
-| Malayalam|
+| Hindi    |
+| Marathi  |
+| Odia     |
 | Punjabi  |
 | Tamil    | 
 
