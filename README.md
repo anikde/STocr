@@ -11,7 +11,8 @@ This repository contains recognition modules for 8 different languages.
 | Punjabi  |
 | Tamil    | 
 
-
+### Versions
+Version 1 at commit at 060efa6567a0ede9b0d08e14d922b488783548ac
 ### Installation
 Requires Python >= 3.9 and PyTorch >= 2.0. The default requirements files will install the latest versions of the dependencies (as of February 22, 2024).
 #### Updating dependency version pins
