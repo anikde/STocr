@@ -3,7 +3,6 @@ import fire
 import json
 import numpy as np
 import os
-# import pandas as pd
 import sys
 import torch
 
@@ -66,7 +65,7 @@ def main(checkpoint, language, image_dir, save_dir):
     Example usage:
         python your_script.py --checkpoint /path/to/checkpoint.ckpt --language hindi --image_dir /path/to/images --save_dir /path/to/save
     """
-    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     if language != "english":
         model = load_model(device, checkpoint)
