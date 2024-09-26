@@ -35,7 +35,7 @@ pip install numpy==1.26.4
 
 
 ### Inference 
-Following command is used to get inference on a set of images from desired model options available in [assets](https://github.com/anikde/STocr/releases/tag/v1.0.0).
+Following command is used to get inference on a set of images from desired model options available in [assets](https://github.com/anikde/STocr/releases/tag/V2.0.0).
 ```
 python your_script.py \
 --checkpoint /path/to/checkpoint.ckpt \
